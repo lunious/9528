@@ -210,7 +210,7 @@ public class IndexListFragment extends BaseFragment {
         });
 
         //设置列表动画
-//        mAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
+        mAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM);
         mAdapter.setLoadMoreView(new CustomLoadMoreView());
         indexRecycler.setAdapter(mAdapter);
 
@@ -244,14 +244,25 @@ public class IndexListFragment extends BaseFragment {
 
         if (!NetUtil.isNetworkConnected(getActivity())) {
             ToastUtil.shortBottonToast(getContext(), "请检查网络设置");
-            requestData(true);
             mAdapter.setEnableLoadMore(false);
             if (!isInitCache) {
                 loadingStatus.showLoading();
             }
+
+            BiaoXunTong.getHandler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    requestData(true);
+                }
+            }, 500);
         } else {
             loadingStatus.showLoading();
-            requestData(true);
+            BiaoXunTong.getHandler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    requestData(true);
+                }
+            }, 500);
         }
 
     }

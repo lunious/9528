@@ -1,7 +1,6 @@
 package com.lubanjianye.biaoxuntong.ui.main.index;
 
 import android.content.Intent;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -31,7 +30,6 @@ import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
@@ -87,8 +85,23 @@ public class IndexHyzxListFragment extends BaseFragment {
         if (!NetUtil.isNetworkConnected(getActivity())) {
             ToastUtil.shortBottonToast(getContext(), "请检查网络设置");
             mAdapter.setEnableLoadMore(false);
+            if (!isInitCache) {
+                loadingStatus.showLoading();
+            }
+            BiaoXunTong.getHandler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    requestData(true);
+                }
+            }, 500);
         } else {
-            requestData(true);
+            loadingStatus.showLoading();
+            BiaoXunTong.getHandler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    requestData(true);
+                }
+            }, 500);
         }
     }
 
@@ -151,7 +164,7 @@ public class IndexHyzxListFragment extends BaseFragment {
             }
         });
         //设置列表动画
-//        mAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
+        mAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM);
         mAdapter.setLoadMoreView(new CustomLoadMoreView());
         indexHyzxRecycler.setAdapter(mAdapter);
 
