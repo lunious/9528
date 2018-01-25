@@ -246,7 +246,11 @@ public class IndexListFragment extends BaseFragment {
             ToastUtil.shortBottonToast(getContext(), "请检查网络设置");
             requestData(true);
             mAdapter.setEnableLoadMore(false);
+            if (!isInitCache) {
+                loadingStatus.showLoading();
+            }
         } else {
+            loadingStatus.showLoading();
             requestData(true);
         }
 
