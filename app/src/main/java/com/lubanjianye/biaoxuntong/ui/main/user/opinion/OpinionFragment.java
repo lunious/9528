@@ -1,6 +1,7 @@
 package com.lubanjianye.biaoxuntong.ui.main.user.opinion;
 
 import android.support.v7.widget.AppCompatTextView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -13,6 +14,9 @@ import com.lubanjianye.biaoxuntong.R;
 import com.lubanjianye.biaoxuntong.base.BaseFragment;
 import com.lubanjianye.biaoxuntong.ui.media.SelectImageActivity;
 import com.lubanjianye.biaoxuntong.ui.media.SelectOptions;
+import com.lubanjianye.biaoxuntong.util.toast.ToastUtil;
+
+import java.io.File;
 
 /**
  * Created by 11645 on 2018/1/25.
@@ -31,6 +35,7 @@ public class OpinionFragment extends BaseFragment implements View.OnClickListene
 
 
     private String mFilePath = "";
+
 
     @Override
     public Object setLayout() {
@@ -83,6 +88,13 @@ public class OpinionFragment extends BaseFragment implements View.OnClickListene
                 mFilePath = "";
                 break;
             case R.id.tv_commit:
+                String content = editText.getText().toString().trim();
+                if (TextUtils.isEmpty(content) && TextUtils.isEmpty(mFilePath)) {
+                    ToastUtil.shortToast(getContext(), "内容为空");
+                    return;
+                }
+                ToastUtil.shortToast(getContext(), "感谢您的反馈！");
+                getActivity().onBackPressed();
                 break;
             default:
                 break;
@@ -92,7 +104,7 @@ public class OpinionFragment extends BaseFragment implements View.OnClickListene
     protected RequestManager mImageLoader;
 
     public synchronized RequestManager getImageLoader() {
-        if (mImageLoader == null){
+        if (mImageLoader == null) {
             mImageLoader = Glide.with(this);
         }
         return mImageLoader;
