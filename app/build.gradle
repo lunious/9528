@@ -8,15 +8,15 @@ android {
         applicationId "com.lubanjianye.biaoxuntong"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 23
-        versionName "1.0.6"
+        versionCode 25
+        versionName "1.0.9-beta"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         manifestPlaceholders = [
                 qq_id           : "1106195613",
-                GETUI_APP_ID    : "xDFIE5aoNL6ADZ2vLwRhf",
-                GETUI_APP_KEY   : "vhht61APrg8nXk3kMLiGp8",
-                GETUI_APP_SECRET: "RHeEO6kolJ9jMgtk21mWTA",
+                GETUI_APP_ID    : "nfBRXAu6uV6jJ2oErUCxS",
+                GETUI_APP_KEY   : "2kapt5NzRE6EmMXAqUFMD3",
+                GETUI_APP_SECRET: "IKuBNiebtF8aBfeL8v3v86",
                 PACKAGE_NAME    : "com.lubanjianye.biaoxuntong"
         ]
     }
@@ -70,8 +70,9 @@ dependencies {
     //Banner依赖
     compile 'com.youth.banner:banner:1.4.10'
     //Glide依赖
-    implementation 'com.github.bumptech.glide:glide:4.5.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+//    implementation 'com.github.bumptech.glide:glide:4.5.0'
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
     //FlycoTabLayout依赖
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
     //MultipleStatusView空白页
@@ -91,5 +92,6 @@ dependencies {
     compile 'com.lzy.net:okgo:3.0.4'
     //SmartRefreshLayout
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
+    compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.6.0'
 
 }

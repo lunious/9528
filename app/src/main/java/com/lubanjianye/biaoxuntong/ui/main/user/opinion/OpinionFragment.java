@@ -7,8 +7,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.lubanjianye.biaoxuntong.R;
 import com.lubanjianye.biaoxuntong.base.BaseFragment;
+import com.lubanjianye.biaoxuntong.ui.media.SelectImageActivity;
+import com.lubanjianye.biaoxuntong.ui.media.SelectOptions;
 
 /**
  * Created by 11645 on 2018/1/25.
@@ -24,6 +28,9 @@ public class OpinionFragment extends BaseFragment implements View.OnClickListene
     private ImageView ivAdd = null;
     private ImageView ivClear = null;
     private AppCompatTextView atvCommit = null;
+
+
+    private String mFilePath = "";
 
     @Override
     public Object setLayout() {
@@ -68,8 +75,12 @@ public class OpinionFragment extends BaseFragment implements View.OnClickListene
                 getActivity().onBackPressed();
                 break;
             case R.id.iv_add:
+                openImageSelector();
                 break;
             case R.id.iv_clear_img:
+                ivAdd.setImageResource(R.mipmap.ic_tweet_add);
+                ivClear.setVisibility(View.GONE);
+                mFilePath = "";
                 break;
             case R.id.tv_commit:
                 break;
@@ -78,5 +89,27 @@ public class OpinionFragment extends BaseFragment implements View.OnClickListene
         }
     }
 
+    protected RequestManager mImageLoader;
+
+    public synchronized RequestManager getImageLoader() {
+        if (mImageLoader == null){
+            mImageLoader = Glide.with(this);
+        }
+        return mImageLoader;
+    }
+
+    public void openImageSelector() {
+        SelectImageActivity.show(getContext(), new SelectOptions.Builder()
+                .setHasCam(false)
+                .setSelectCount(1)
+                .setCallback(new SelectOptions.Callback() {
+                    @Override
+                    public void doSelected(String[] images) {
+                        mFilePath = images[0];
+                        getImageLoader().load(mFilePath).into(ivAdd);
+                        ivClear.setVisibility(View.VISIBLE);
+                    }
+                }).build());
+    }
 
 }

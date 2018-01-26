@@ -28,6 +28,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- SD卡读取权限，用户写入离线定位数据-->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!--该权限用于获取手机相机使用权限，比如发送图片动弹需要拍照-->
+    <uses-permission android:name="android.permission.CAMERA" />
 
 
     <!--开启屏幕适配-->
@@ -96,6 +98,11 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.main.user.setting.SettingActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.Main"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.media.SelectImageActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.Main"
             android:windowSoftInputMode="adjustPan" />

@@ -2,7 +2,6 @@ package com.lubanjianye.biaoxuntong.ui.main.index.detail;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.lubanjianye.biaoxuntong.base.BaseActivity;
 import com.lubanjianye.biaoxuntong.base.BaseFragment;
@@ -36,7 +35,6 @@ public class IndexXcgggDetailActivity extends BaseActivity {
             ajaxType = intent.getStringExtra("ajaxlogtype");
             mId = intent.getStringExtra("mId");
         }
-        Log.d("JABNDJBSJDJASDA", "mId====" + mId);
         if (!TextUtils.isEmpty(mId)) {
 
             OkGo.<String>post(BiaoXunTongApi.URL_GETUITASK)
