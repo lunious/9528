@@ -51,7 +51,7 @@
         android:layout_marginRight="@dimen/d16"
         android:background="@color/main_status_white"
         android:gravity="top"
-        android:hint="我们将不断改进"
+        android:hint="简要描述您要反馈的问题和意见，我们将不断改进"
         android:padding="@dimen/d8"
         android:textSize="@dimen/s14" />
 

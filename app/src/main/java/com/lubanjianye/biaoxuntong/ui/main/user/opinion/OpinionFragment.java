@@ -68,7 +68,6 @@ public class OpinionFragment extends BaseFragment implements View.OnClickListene
                 getActivity().onBackPressed();
                 break;
             case R.id.iv_add:
-//                openImageSelector();
                 break;
             case R.id.iv_clear_img:
                 break;
@@ -78,18 +77,6 @@ public class OpinionFragment extends BaseFragment implements View.OnClickListene
                 break;
         }
     }
-//    public void openImageSelector() {
-//        SelectImageActivity.show(this, new SelectOptions.Builder()
-//                .setHasCam(false)
-//                .setSelectCount(1)
-//                .setCallback(new SelectOptions.Callback() {
-//                    @Override
-//                    public void doSelected(String[] images) {
-//                        mFilePath = images[0];
-//                        getImageLoader().load(mFilePath).into(iv_add);
-//                        iv_clear_img.setVisibility(View.VISIBLE);
-//                    }
-//                }).build());
-//    }
+
 
 }
